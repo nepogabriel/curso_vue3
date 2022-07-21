@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Vue</title>
+</head>
+<body>
+    <div id="app">
+        <form id="app-form">
+            <!-- Pelo v-model consigo acessar o valor desse input ( resgato dentro do data() )-->
+            <input type="text" v-model="input_name" placeholder="Digite seu nome...">
+            <!-- v-on:click Evento de click ( envia para o data() ) -->
+            <input type="submit" value="Enviar" v-on:click="submitForm">
+        </form>
+
+        <!-- Depende do submit para atualizar o nome -->
+        <p>O meu nome é: {{ name }}</p>
+        <!-- Atualiza o nome em tempo real -->
+        <p>Data binding: {{ input_name }}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="src/app.js"></script>
+</body>
+</html>
