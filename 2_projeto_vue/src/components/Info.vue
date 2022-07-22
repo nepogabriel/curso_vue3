@@ -3,13 +3,21 @@
     <p v-if="esta_trabalhando">Estou trabalhando no momento.</p>
     <p v-else>Estou em busca de novas oportunidades.</p>
 
+    <hr/>
     <p>Utilizo as seguintes tecnologias:</p>
 
+    <!-- Quando é array comum usa a :key com 'index' -->
     <ul>
-      <li>Laravel 8</li>
-      <li>Vue.js 3</li>
-      <li>Css</li>
-      <li>Ionic</li>
+      <li v-for="(technology, index) in backend_technologeis" :key="index">
+        {{ technology }}
+      </li>
+    </ul>
+
+    <!-- Quando é um array de objetos usa o ID na :key -->
+    <ul>
+      <li v-for="technology in frontend_technologeis" :key="technology.id">
+        {{ technology.language }}
+      </li>
     </ul>
 
     <hr/>
@@ -48,7 +56,18 @@
         email: 'gabriel@email.com',
         link_portfolio: 'https://github.com/nepogabriel/',
         data_nascimento: false,
-        textoBotao: 'Mostrar Data de Nascimento'
+        textoBotao: 'Mostrar Data de Nascimento',
+        backend_technologeis: [
+          'Laravel 8',
+          'PHP',
+          'MySQL'
+        ],
+        frontend_technologeis: [
+          {id: 1, language: 'Vue.js 3'},
+          {id: 1, language: 'Html5'},
+          {id: 1, language: 'Css3'},
+          {id: 1, language: 'Ionic'}
+        ]
       }
     },
     methods: { // É possível acessar as informações do data() dentro do methods
