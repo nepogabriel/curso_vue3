@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <Header :esta_logado="true"/>
     <h1>Olá Mundo!</h1>
     <!-- Utilizando Componente -->
     <PrimeiroComponente/>

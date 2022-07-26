@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2>Essa é a descrição da pessoa {{ name }}</h2>
-    <Info/>
+
+    <!-- Enviando o e-mail atráves de props (vue.js 3) -->
+    <Info :mail="mail" :esta_trabalhando="true"/>
     <Form/>
   </div>
 </template>
@@ -18,7 +20,8 @@ export default {
   },
   data() {
     return {
-      name: 'Gabriel'
+      name: 'Gabriel',
+      mail: 'nepo@email.com'
     }
   }
 }

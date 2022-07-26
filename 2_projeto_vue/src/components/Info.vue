@@ -1,5 +1,9 @@
 <template>
   <div>
+    <p>{{ mail }} - {{ email }}</p>
+
+    <hr/>
+
     <p v-if="esta_trabalhando">Estou trabalhando no momento.</p>
     <p v-else>Estou em busca de novas oportunidades.</p>
 
@@ -41,9 +45,12 @@
 
   export default {
     name: 'Info',
-    components: {Picture},
-    compenents: {
+    components: {
       Picture
+    },
+    props: { // Pode tipar os props
+      mail: String,
+      esta_trabalhando: Boolean
     },
     data() {
       return {
@@ -51,7 +58,7 @@
         * Utilizado v-show o elemento é carregado na página e continua lá, porém com o display: none.
         * Já no caso do "v-if" o elemento não é nem carregado na página.
         */
-        esta_trabalhando: true, // Usando diretiva v-if
+        //esta_trabalhando: true, // Usando diretiva v-if
         mostrar_email: true, // Usando diretiva v-show (Comportamento do if sem o else)
         email: 'gabriel@email.com',
         link_portfolio: 'https://github.com/nepogabriel/',
