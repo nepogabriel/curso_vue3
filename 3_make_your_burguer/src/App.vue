@@ -1,30 +1,44 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <NavbarComponent :logo="logo" :alt="app_name"/>
   <router-view/>
+  <FooterComponent/>
 </template>
 
+<script>
+import NavbarComponent from "@/components/NavbarComponent";
+import FooterComponent from "@/components/FooterComponent";
+
+export default {
+  components: {
+    NavbarComponent,
+    FooterComponent
+  },
+  data() {
+    return {
+      logo: '/img/logo.png',
+      app_name: 'Make Your Burger'
+    }
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  /*font-family: Helvetica;*/
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /*Para os inputs não passar do tamanho da div pai*/
+}
+
+.main-container {
+  margin: 50px;
+  min-height: 200px;
+}
+
+.page-title {
   text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  font-size: 42px;
+  margin-bottom: 30px;
+  color: #222;
 }
 </style>
