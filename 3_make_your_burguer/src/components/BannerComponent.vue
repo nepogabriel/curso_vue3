@@ -13,8 +13,9 @@ export default {
 <style scoped>
 #main-banner {
   /*background-image: url('/img/burger.jpg');*/
-  background-image: url('../../public/img/burger.jpg');
-  background-position: 0 -250px; /*Desloca o background no eixo Y*/
+  /*background-image: url('../../public/img/burger.jpg');*/
+  background-color: rgba(252, 186, 3, 0.33);
+  /*background-position: 0 -250px; !*Desloca o background no eixo Y*!*/
   background-size: cove; /*Irá deixar o máximo da imagem aparecendo*!*/
   width: 100%;
   height: 500px;

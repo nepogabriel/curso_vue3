@@ -2,17 +2,19 @@
   <BannerComponent/>
   <div class="main-container">
     <h1 class="page-title">Monte seu burger:</h1>
-    <p>formulário</p>
+    <BurgerFormComponent/>
   </div>
 </template>
 
 <script>
 import BannerComponent from "@/components/BannerComponent";
+import BurgerFormComponent from "@/components/BurgerFormComponent";
 
 export default {
   name: 'HomeView',
   components: {
-    BannerComponent
+    BannerComponent,
+    BurgerFormComponent
   }
 }
 </script>

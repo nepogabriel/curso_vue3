@@ -15,13 +15,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
   height: 50px;
   background-color: #222;
   color: #FFF;
   font-weight: bold;
   border-top: 4px solid #111;
-  bottom: 0;
 }
 </style>
