@@ -3,7 +3,7 @@
     <p>Componente de Mensagem</p>
 
     <div>
-      <form id="burger-form">
+      <form id="burger-form" @submit="createBurger">
         <div class="input-container">
           <label for="name">Nome do Cliente</label>
           <!-- v-model - altera o valor do input, select, etc -->
@@ -59,15 +59,15 @@ export default {
       // Dados que vão ser enviados para o servidor
       name: null,
       pao: null,
+      carne: null,
       opcionais: [],
-      status: 'solicitado',
       msg: null
     }
   },
   methods: {
     // async - método assíncrono
     async getIngredientes() { // Irá pegar os dados do backend
-      const requisicao = await fetch('http://localhost:3000/ingredientes');
+      const requisicao = await fetch('http://localhost:3000/ingredientes'); // Se enviar assim é GET por padrão
       const data = await requisicao.json(); // O resultado da requisição irá ficar nessa constante
 
       this.paes = data.paes;
@@ -75,6 +75,43 @@ export default {
       this.opcionaisData = data.opcionais;
 
       console.log(data);
+    },
+    async createBurger(e) {
+
+      e.preventDefault();
+
+      console.log('Criou o Burger');
+
+      const data = {
+        nome: this.name,
+        pao: this.pao,
+        carne: this.carne,
+        opcionais:  Array.from(this.opcionais), // Utilizar Array.from quando o dado for um array
+        status: 'Solicitado'
+      }
+
+      // transformando em string que tem formato de JSON p/ enviar na requisição p/ API
+      const dataJson = JSON.stringify(data);
+
+      const request = await fetch('http://localhost:3000/burgers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: dataJson // Dados que será enviado na requisição
+      });
+
+      // Pegando o retorno da requisição p/ API
+      const result_request = await request.json();
+
+      console.log(result_request);
+
+      //colocar uma mensagem de sistema
+      //limpar mensagem
+
+      // limpar os campos após o envio
+      this.name = '';
+      this.pao = '';
+      this.carne = '';
+      this.opcionais = []; // this.opcionais = '' - Assim também funciona
     }
   },
   mounted() { // Quando o componente for montado, o mounted() será executado
