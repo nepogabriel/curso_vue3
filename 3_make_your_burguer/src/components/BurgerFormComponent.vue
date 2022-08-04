@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Componente de Mensagem</p>
+    <MessageComponent :message="message" v-if="message" />
 
     <div>
       <form id="burger-form" @submit="createBurger">
@@ -47,8 +47,13 @@
 </template>
 
 <script>
+import MessageComponent from "@/components/MessageComponent";
+
 export default {
   name: 'BurgerFormComponent',
+  components: {
+    MessageComponent
+  },
   data() {
     return {
       // Dados que vão vir do servidor
@@ -61,7 +66,9 @@ export default {
       pao: null,
       carne: null,
       opcionais: [],
-      msg: null
+
+      // Mensagem do MessageComponent
+      message: null
     }
   },
   methods: {
@@ -104,8 +111,11 @@ export default {
 
       console.log(result_request);
 
-      //colocar uma mensagem de sistema
-      //limpar mensagem
+      // Mensagem após criar o pedido
+      this.message = `Pedido Nº ${result_request.id} realizado com sucesso!`;
+
+      // Limpar mensagem
+      setTimeout(() => this.message = null, 3000);
 
       // limpar os campos após o envio
       this.name = '';
