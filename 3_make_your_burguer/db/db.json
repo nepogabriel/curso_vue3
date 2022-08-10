@@ -83,38 +83,6 @@
   ],
   "burgers": [
     {
-      "nome": "Gabriel Ribeiro",
-      "pao": "3 Queijos",
-      "carne": "Alcatra",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
-      ],
-      "status": "Solicitado",
-      "id": 1
-    },
-    {
-      "nome": "Zeca",
-      "pao": "Integral",
-      "carne": "Veggie burger",
-      "opcionais": [
-        "Tomate",
-        "Pepino"
-      ],
-      "status": "Solicitado",
-      "id": 2
-    },
-    {
-      "nome": "Nome teste",
-      "pao": "3 Queijos",
-      "carne": "Maminha",
-      "opcionais": [
-        "Salame"
-      ],
-      "status": "Solicitado",
-      "id": 3
-    },
-    {
       "nome": "Gabrielle",
       "pao": "Integral",
       "carne": "Maminha",
@@ -134,6 +102,20 @@
       ],
       "status": "Solicitado",
       "id": 5
+    },
+    {
+      "nome": "Fulano",
+      "pao": "3 Queijos",
+      "carne": "Maminha",
+      "opcionais": [
+        "Bacon",
+        "Salame",
+        "Cebola roxa",
+        "Cheddar",
+        "Tomate"
+      ],
+      "status": "Solicitado",
+      "id": 6
     }
   ]
 }

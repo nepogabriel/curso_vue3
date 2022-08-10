@@ -27,9 +27,14 @@
           <div>
             <select name="status" class="status">
               <option value="">Selecione</option>
+              <!-- v-bind:selected está fazendo uma condição, irá selecionar o status do pedido,
+              onde o status do hamburger for igual algum tipo(status) que está no loop -->
+              <option v-for="sts in status" :key="sts.id" value="sts.tipo" v-bind:selected="burger.status == sts.tipo">
+                {{ sts.tipo }}
+              </option>
             </select>
 
-            <button class="delete-btn">Cancelar</button>
+            <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
           </div>
         </div>
       </div>
@@ -52,13 +57,29 @@ export default {
     async getPedidos() {
       const request = await fetch('http://localhost:3000/burgers');
 
-      const result_request = await request.json();
-
-      this.burgers = result_request;
-
-      console.log(this.burgers);
+      this.burgers = await request.json();
 
       // resgatar os status
+      this.getStatus();
+    },
+    // Pegando os status do pedido
+    async getStatus() {
+      const request = await fetch('http://localhost:3000/status');
+
+      this.status = await request.json();
+    },
+    // Deletar um pedido(burger)
+    async deleteBurger(id) {
+      const request = await fetch(`http://localhost:3000/burgers/${id}`, {
+        method: 'DELETE'
+      });
+
+      // mensagem de pedido deletado
+
+      /* Carregando novamente lista de pedidos atualizada.
+      (Poderia ser uma opção retirar o pedido(burger) da lista em burgers que está no data(),
+      desta forma economizaria recurso/custo evitando consulta para API) */
+      this.getPedidos();
     }
   },
   mounted() {
