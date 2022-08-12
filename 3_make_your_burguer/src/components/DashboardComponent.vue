@@ -25,11 +25,11 @@
             </ul>
           </div>
           <div>
-            <select name="status" class="status">
+            <select name="status" class="status" @change="updateBurger($event, burger.id)">
               <option value="">Selecione</option>
               <!-- v-bind:selected está fazendo uma condição, irá selecionar o status do pedido,
               onde o status do hamburger for igual algum tipo(status) que está no loop -->
-              <option v-for="sts in status" :key="sts.id" value="sts.tipo" v-bind:selected="burger.status == sts.tipo">
+              <option v-for="sts in status" :key="sts.id" :value="sts.tipo" v-bind:selected="burger.status == sts.tipo">
                 {{ sts.tipo }}
               </option>
             </select>
@@ -80,6 +80,23 @@ export default {
       (Poderia ser uma opção retirar o pedido(burger) da lista em burgers que está no data(),
       desta forma economizaria recurso/custo evitando consulta para API) */
       this.getPedidos();
+    },
+    // Atualizar o status do pedido
+    async updateBurger(event, id) {
+      // Pegando qual valor o usuário está enviando
+      const opiton = event.target.value;
+
+      const dataJson = JSON.stringify({status: opiton});
+
+      const request = await fetch(`http://localhost:3000/burgers/${id}`, {
+        method: 'PATCH', // atualiza apenas o que foi enviado
+        headers: {'Content-Type': 'application/json'},
+        body: dataJson
+      });
+
+      const result_request = await request.json();
+
+      console.log(result_request);
     }
   },
   mounted() {
