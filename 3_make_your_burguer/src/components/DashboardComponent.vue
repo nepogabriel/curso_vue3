@@ -1,5 +1,8 @@
 <template>
   <div id="burger-table">
+
+    <MessageComponent :message="message" v-if="message"/>
+
     <div>
       <div id="burger-table-heading">
         <div class="order-id">#:</div>
@@ -43,13 +46,19 @@
 </template>
 
 <script>
+import MessageComponent from "@/components/MessageComponent";
+
 export default {
   name: 'DashboardComponent',
+  components: {
+    MessageComponent
+  },
   data() {
     return {
       burgers: null,
       burger_id: null,
-      status: []
+      status: [],
+      message: null
     }
   },
   methods: {
@@ -74,7 +83,11 @@ export default {
         method: 'DELETE'
       });
 
-      // mensagem de pedido deletado
+      // Mensagem de pedido deletado
+      this.message = `Pedido Nº ${id} Excluído!`;
+
+      // Limpar mensagem
+      setTimeout(() => this.message = null, 3000);
 
       /* Carregando novamente lista de pedidos atualizada.
       (Poderia ser uma opção retirar o pedido(burger) da lista em burgers que está no data(),
@@ -95,6 +108,12 @@ export default {
       });
 
       const result_request = await request.json();
+
+      // Mensagem de pedido deletado
+      this.message = `Pedido Nº ${result_request.id} Atualizado!`;
+
+      // Limpar mensagem
+      setTimeout(() => this.message = null, 3000);
 
       console.log(result_request);
     }

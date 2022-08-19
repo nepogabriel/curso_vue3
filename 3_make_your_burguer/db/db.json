@@ -83,39 +83,14 @@
   ],
   "burgers": [
     {
-      "nome": "Gabrielle",
-      "pao": "Integral",
+      "nome": "Gabriel Ribeiro",
+      "pao": "",
       "carne": "Maminha",
       "opcionais": [
         "Bacon"
       ],
       "status": "Em produção",
-      "id": 4
-    },
-    {
-      "nome": "Mônica",
-      "pao": "Integral",
-      "carne": "Maminha",
-      "opcionais": [
-        "Bacon",
-        "Tomate"
-      ],
-      "status": "Finalizado",
-      "id": 5
-    },
-    {
-      "nome": "Fulano",
-      "pao": "3 Queijos",
-      "carne": "Maminha",
-      "opcionais": [
-        "Bacon",
-        "Salame",
-        "Cebola roxa",
-        "Cheddar",
-        "Tomate"
-      ],
-      "status": "Solicitado",
-      "id": 6
+      "id": 7
     }
   ]
 }
